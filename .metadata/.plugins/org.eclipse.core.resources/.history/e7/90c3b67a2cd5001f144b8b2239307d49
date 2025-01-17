@@ -75,11 +75,7 @@ public class Vehiculo {
 	}
 	
 	public void imprimeMarcaModelo() {
-		if(this.marca == null) {
-			System.out.println("Color: "+this.color);
-		} else {
-			System.out.println("Marca: "+this.marca+" Modelo: "+this.modelo+" Color: "+this.color);
-		}
+		System.out.println("Marca: "+this.marca+" Modelo: "+this.modelo+" Color: "+this.color);
 	}
 	
 	@Override

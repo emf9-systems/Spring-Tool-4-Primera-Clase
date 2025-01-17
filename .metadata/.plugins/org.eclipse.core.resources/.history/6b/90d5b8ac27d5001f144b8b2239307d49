@@ -1,0 +1,15 @@
+package com.company.objective;
+
+public class Auto extends Vehiculo {
+	
+	private int puertas;
+
+	public Auto() {
+		super();
+	}
+	
+	
+	
+	
+
+}

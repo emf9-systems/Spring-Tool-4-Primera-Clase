@@ -74,21 +74,9 @@ public class Vehiculo {
 		this.ruedas = ruedas;
 	}
 	
-	public void imprimeMarcaModelo() {
-		if(this.marca == null) {
-			System.out.println("Color: "+this.color);
-		} else {
-			System.out.println("Marca: "+this.marca+" Modelo: "+this.modelo+" Color: "+this.color);
-		}
-	}
-	
-	@Override
 	public String toString() {
-		return "Vehiculo [ano=" + ano + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", ruedas="
-				+ ruedas + "]";
+		return "Vehiculo = Ano: "+ ano +" Marca: "+ marca +" Modelo: "+ modelo +" Color: "+ color +" Ruedas: "+ ruedas;
 	}
-	
-	
 	
 	
 	
