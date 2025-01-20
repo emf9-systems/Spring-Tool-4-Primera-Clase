@@ -6,7 +6,7 @@ public class Vehiculo {
 	private String modelo;
 	private String color;
 	private int ruedas;
-	protected int velocidad = 0;
+	
 	
 	public Vehiculo() {}
 
@@ -87,6 +87,7 @@ public class Vehiculo {
 		return "Vehiculo [ano=" + ano + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", ruedas="
 				+ ruedas + "]";
 	}
+	
 	
 	
 	

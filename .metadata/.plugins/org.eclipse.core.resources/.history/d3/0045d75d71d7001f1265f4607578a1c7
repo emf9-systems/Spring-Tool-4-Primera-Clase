@@ -6,7 +6,7 @@ public class Vehiculo {
 	private String modelo;
 	private String color;
 	private int ruedas;
-	protected int velocidad = 0;
+	protected int velocidad;
 	
 	public Vehiculo() {}
 

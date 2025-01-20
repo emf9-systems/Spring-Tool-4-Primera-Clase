@@ -1,6 +1,6 @@
 package com.company.objective;
 
-public class Auto extends Vehiculo implements ManejarVehiculo{
+public class Auto extends Vehiculo {
 	
 	private int puertas;
 
@@ -24,18 +24,6 @@ public class Auto extends Vehiculo implements ManejarVehiculo{
 	@Override
 	public void imprimeMarcaModelo() {
 		System.out.println("Marca: "+super.getMarca()+" Modelo: "+super.getModelo());
-	}
-	
-	public void acelerar() {
-		System.out.println("Estas pisando el acelerador");
-		velocidad+=2;
-		System.out.println("Tu velocidad es: "+velocidad+" km/h");
-	}
-	
-	public void desacelerar() {
-		System.out.println("Estas pisando el freno");
-		velocidad-=2;
-		System.out.println("Tu velocidad es: "+velocidad+" km/h");
 	}
 	
 	

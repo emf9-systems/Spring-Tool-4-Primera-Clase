@@ -27,7 +27,7 @@ public class Aplicacion {
 		auto2.acelerar();
 		auto2.acelerar();
 		auto2.desacelerar();
-		System.out.println("-----------------------------------------------------------------");
+		System.out.println("-------------");
 		biciNueva.manejar();
 		biciNueva.acelerar();
 		biciNueva.acelerar();
