@@ -1,4 +1,77 @@
-@charset "UTF-8";
+/* background y fuentes */
+html, body {
+  height: 100%;
+  margin: 0;  /* Para eliminar los márgenes predeterminados del navegador */
+}
+
+body {
+  background: linear-gradient(135deg, #ff69b4, #8a2be2); /* Gradiente rosa-morado */
+  font-family: 'Roboto', sans-serif;
+}
+
 h1 {
-	color: red;
+  font-family: 'Rock Salt', cursive;
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos de la tarjeta */
+.container {
+  max-width: 600px;
+  margin-top: 50px;
+  color: white;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background: #ff1493;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+/* Estilos de los campos de entrada */
+.form-label {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: white;
+}
+
+.form-control {
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #fff;
+  padding: 10px 20px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 5px #ff69b4;
+  border-color: #ff69b4;
+}
+
+/* Estilos para el botón */
+.btn-info {
+  background-color: #ff1493;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 1.2em;
+  transition: 0.3s;
+  color: white;
+}
+
+.btn-info:hover {
+  background-color: #ff77ff;
+  transform: scale(1.05);
+  color: #5b5e5a;
 }
