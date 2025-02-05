@@ -42,8 +42,11 @@
                                     <td>${usuario.apellido}</td>
                                     <td>${usuario.email}</td>
                                     <td class="d-flex justify-content-start gap-3">
-                                        <a href="/usuarios/editar/${usuario.id}" class="btn btn-sm btn-outline-warning">Editar</a>
-                                        <a href="/usuarios/eliminar/${usuario.id}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                    	<form action="/borrar/${usuario.id}" method="POST">
+                                    		<input type="hidden" name="_method" value="DELETE"/>
+                                    		<input type="submit" value="Borrar" class="btn btn-sm btn-outline-danger"/>
+                                    	</form>
+										<a href="/editar/${usuario.id}" class="btn btn-sm btn-outline-warning">Editar</a>                               
 										<a href="/mostrar/${usuario.id}" class="btn btn-sm btn-outline-primary" target="_blank">Mostrar Info</a>                               
                                     </td>
                                 </tr>

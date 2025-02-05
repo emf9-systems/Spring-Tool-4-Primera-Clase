@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -77,7 +79,7 @@ public class ControllerUsers {
 	}
 	
 	@GetMapping("/nuevo")
-	public String nuevo(@ModelAttribute("usuario") Usuario usuario) {
+	public String nuevo(@ModelAttribute Usuario usuario) {
 		return "nuevo.jsp";
 	}
 	
@@ -93,10 +95,42 @@ public class ControllerUsers {
 	}
 	
 	@GetMapping("/mostrar/{id}") // localhost:8080/mostrar/1
-	public String mostrar(@PathVariable("id") Long id, /* id = 1 */ Model model) {
+	public String mostrar(@PathVariable Long id, Model model) {
 	    Usuario esteUsuario = service.buscarUsuario(id); // buscarUsuario(1)
 	    model.addAttribute("usuario", esteUsuario);
 	    return "mostrar.jsp";
+	}
+	
+	@DeleteMapping("/borrar/{id}")
+	public String borrar(@PathVariable Long id) {
+		service.borrarUsuario(id);
+	    return "redirect:/dashboard";
+	}
+	
+	//PARA FORMULARIOSSSS OJOOOO AL PATRON QUE SE REPITENNN 
+	@GetMapping("/editar/{id}")
+	public String editar(@PathVariable Long id,
+						 @ModelAttribute Usuario usuario,
+						 Model model) {
+		Usuario esteUsuario = service.buscarUsuario(id);
+		model.addAttribute("usuario", esteUsuario);
+		return "editar.jsp";
+	}
+	
+	@PutMapping("/actualizar/{id}")
+	public String actualizar(@Valid @ModelAttribute Usuario usuario,
+						     BindingResult result) {
+		if(result.hasErrors()) {
+			return "editar.jsp";
+		} else {
+			service.guardarUsuario(usuario);
+			return "loading.jsp";
+		}
+	}
+	
+	@GetMapping("/loading")
+	public String pantallaCarga() {
+	    return "redirect:/dashboard";
 	}
 
 }
