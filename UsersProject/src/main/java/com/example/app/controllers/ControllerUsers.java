@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.app.models.Salon;
 import com.example.app.models.Usuario;
 import com.example.app.services.Servicios;
 
@@ -75,18 +76,26 @@ public class ControllerUsers {
 	public String dashboard(Model model) {
 		List<Usuario> usuarios = service.todosUsuarios();
 		model.addAttribute("usuarios", usuarios);
+		List<Salon> salones = service.todosLosSalones();
+		model.addAttribute("salones", salones);
 		return "dashboard.jsp";
 	}
 	
 	@GetMapping("/nuevo")
-	public String nuevo(@ModelAttribute Usuario usuario) {
+	public String nuevo(@ModelAttribute Usuario usuario,
+						Model model) {
+		List<Salon> salones = service.todosLosSalones();
+		model.addAttribute("salones", salones);
 		return "nuevo.jsp";
 	}
 	
 	@PostMapping("/crear")
 	public String crear(@Valid @ModelAttribute("usuario") Usuario nuevoUsuario,
-						BindingResult result) {
+						BindingResult result,
+						Model model) {
 		if(result.hasErrors()) {
+			List<Salon> salones = service.todosLosSalones();
+			model.addAttribute("salones", salones);
 			return "nuevo.jsp";
 		} else {
 			service.guardarUsuario(nuevoUsuario);
@@ -114,13 +123,18 @@ public class ControllerUsers {
 						 Model model) {
 		Usuario esteUsuario = service.buscarUsuario(id);
 		model.addAttribute("usuario", esteUsuario);
+		List<Salon> salones = service.todosLosSalones();
+		model.addAttribute("salones", salones);
 		return "editar.jsp";
 	}
 	
 	@PutMapping("/actualizar/{id}")
 	public String actualizar(@Valid @ModelAttribute Usuario usuario,
-						     BindingResult result) {
+						     BindingResult result,
+						     Model model) {
 		if(result.hasErrors()) {
+			List<Salon> salones = service.todosLosSalones();
+			model.addAttribute("salones", salones);
 			return "editar.jsp";
 		} else {
 			service.guardarUsuario(usuario);
@@ -132,5 +146,37 @@ public class ControllerUsers {
 	public String pantallaCarga() {
 	    return "redirect:/dashboard";
 	}
+	
+	@DeleteMapping("/borrarCursos/{id}")
+	public String borrarCurso(@PathVariable Long id) {
+		service.borrarCurso(id);
+	    return "redirect:/dashboard";
+	}
+	
+	
+	@GetMapping("/nuevoCurso")
+	public String nuevoCurso(@ModelAttribute Salon salon) {
+		return "nuevoCurso.jsp";
+	}
+	
+	@PostMapping("/crearCurso")
+	public String crearCurso(@Valid @ModelAttribute("salon") Salon nuevoSalon,
+						BindingResult result,
+						Model model) {
+		if(result.hasErrors()) {
+			return "nuevoCurso.jsp";
+		} else {
+			service.guardarCurso(nuevoSalon);
+			return "redirect:/dashboard";
+		}
+	}
+	
+	@GetMapping("/mostrarCurso/{id}") // localhost:8080/mostrar/1
+	public String mostrarCurso(@PathVariable Long id, Model model) {
+	    Salon esteCurso = service.buscarSalon(id); // buscarUsuario(1)
+	    model.addAttribute("salon", esteCurso);
+	    return "mostrarCurso.jsp";
+	}
+	
 
 }

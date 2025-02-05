@@ -35,6 +35,15 @@
           <form:input class="form-control" path="email" placeholder="Ingrese su correo electrónico..." />
           <form:errors path="email" class="text-danger"/>
         </div>
+        <div class="mb-3">
+          <form:label path="salon" class="form-label">Cursos:</form:label>
+          <form:select class="form-select" path="salon">
+          	<c:forEach items="${salones}" var="salon">
+          		<option value="${salon.id}">${salon.curso}</option>
+          	</c:forEach>
+          </form:select>
+          <form:errors path="salon" class="text-danger"/>
+        </div>
         <div class="d-flex justify-content-center">
           <input type="submit" class="btn btn-info mt-3" value="Guardar Usuario">
         </div>
