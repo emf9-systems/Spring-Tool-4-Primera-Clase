@@ -7,10 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,9 +40,7 @@
 				                    <td>${usuario.nombre}</td>
 				                    <td>${usuario.apellido}</td>
 				                    <td>${usuario.email}</td>
-				                    <td>${usuario.salon.curso}</td>
-				                    
-				                    <!-- Nueva columna Hobbies -->
+				                    <td>${usuario.salon.curso}</td>				                    
 				                    <td>
 				                        <c:choose>
 				                            <c:when test="${not empty usuario.hobbies}">
@@ -59,9 +54,7 @@
 				                                <span class="text-muted">Sin hobbies</span>
 				                            </c:otherwise>
 				                        </c:choose>
-				                    </td>
-				
-				                    <!-- Acciones alineadas correctamente -->
+				                    </td>				
 				                    <td class="align-middle">
 				                        <div class="d-flex flex-wrap gap-2 align-items-center">
 				                            <form action="/borrar/${usuario.id}" method="POST">
@@ -87,7 +80,6 @@
             <a href="/nuevo" class="btn btn-outline-success">Crear Usuario</a>
         </div>
     </div>
-
     <div class="container mt-4">
         <h1 class="text-center">Lista de Cursos</h1>
         <div class="table-responsive">

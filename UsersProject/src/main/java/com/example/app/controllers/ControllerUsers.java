@@ -200,7 +200,16 @@ public class ControllerUsers {
 	    // Invocar a un método que me asigne el hobby a un usuario
 		service.asignarHobbyAUsuario(usuarioId, hobbyId);
 
-	    return "redirect:/dashboard";
+	    return "redirect:/asignar/{usuarioId}";
+	}
+	
+	@GetMapping("/quitarHobby/{usuarioId}/{hobbyId}")
+	public String quitarHobby(@PathVariable("usuarioId") Long usuarioId,
+	                          @PathVariable("hobbyId") Long hobbyId) {
+	    // Incluir aquí la lógica para eliminar el hobby del usuario
+		service.quitarHobbyAUsuario(usuarioId, hobbyId);
+		
+	    return "redirect:/asignar/{usuarioId}";
 	}
 
 
