@@ -1,14 +1,19 @@
 package com.example.app.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -28,6 +33,13 @@ public class Hobby {
 	private Date createdAt;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+    		name="usuarios_has_hobbies",
+    		joinColumns=@JoinColumn(name="hobby_id"),
+    	    inverseJoinColumns=@JoinColumn(name="usuario_id")
+    		) 
+    private List<Usuario> usuarios;
 	
 	public Hobby() {}
 
@@ -63,6 +75,14 @@ public class Hobby {
 		this.updatedAt = updatedAt;
 	}
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	@PrePersist  //Antes de crear al usuario
 	protected void onCreate() {
 		this.createdAt = new Date();  //DEFAULT CURRENT_TIMESTAMP

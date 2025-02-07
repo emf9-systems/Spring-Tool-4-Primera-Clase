@@ -124,3 +124,13 @@ h1 {
   opacity: 0.5; /* Se verá deshabilitado hasta que termine el video */
 }
 
+/* Fondo transparente para las tablas */
+.table {
+  background: transparent;
+}
+
+/* Color blanco para los títulos h4 */
+h4 {
+  color: white;
+}
+

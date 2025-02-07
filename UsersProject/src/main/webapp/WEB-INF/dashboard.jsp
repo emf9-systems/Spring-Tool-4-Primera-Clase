@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -30,41 +30,64 @@
                         <th>Apellido</th>
                         <th>Email</th>
                         <th>Curso</th>
+                        <th>Hobbies</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <c:choose>
-                        <c:when test="${not empty usuarios}">
-                            <c:forEach var="usuario" items="${usuarios}">
-                                <tr>
-                                    <td>${usuario.id}</td>
-                                    <td>${usuario.nombre}</td>
-                                    <td>${usuario.apellido}</td>
-                                    <td>${usuario.email}</td>
-                                    <td>${usuario.salon.curso}</td>
-                                    <td class="d-flex justify-content-start gap-3">
-                                    	<form action="/borrar/${usuario.id}" method="POST">
-                                    		<input type="hidden" name="_method" value="DELETE"/>
-                                    		<input type="submit" value="Borrar" class="btn btn-sm btn-outline-danger"/>
-                                    	</form>
-										<a href="/editar/${usuario.id}" class="btn btn-sm btn-outline-warning">Editar</a>                               
-										<a href="/mostrar/${usuario.id}" class="btn btn-sm btn-outline-primary" target="_blank">Mostrar Info</a>										                               
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <tr>
-                                <td colspan="5" class="text-center">No hay usuarios registrados</td>
-                            </tr>
-                        </c:otherwise>
-                    </c:choose>
-                </tbody>
+				<tbody>
+				    <c:choose>
+				        <c:when test="${not empty usuarios}">
+				            <c:forEach var="usuario" items="${usuarios}">
+				                <tr>
+				                    <td>${usuario.id}</td>
+				                    <td>${usuario.nombre}</td>
+				                    <td>${usuario.apellido}</td>
+				                    <td>${usuario.email}</td>
+				                    <td>${usuario.salon.curso}</td>
+				                    
+				                    <!-- Nueva columna Hobbies -->
+				                    <td>
+				                        <c:choose>
+				                            <c:when test="${not empty usuario.hobbies}">
+				                                <ul class="list-unstyled mb-0">
+				                                    <c:forEach var="hobby" items="${usuario.hobbies}">
+				                                        <li>• ${hobby.pasaTiempo}</li>
+				                                    </c:forEach>
+				                                </ul>
+				                            </c:when>
+				                            <c:otherwise>
+				                                <span class="text-muted">Sin hobbies</span>
+				                            </c:otherwise>
+				                        </c:choose>
+				                    </td>
+				
+				                    <!-- Acciones alineadas correctamente -->
+				                    <td class="align-middle">
+				                        <div class="d-flex flex-wrap gap-2 align-items-center">
+				                            <form action="/borrar/${usuario.id}" method="POST">
+				                                <input type="hidden" name="_method" value="DELETE"/>
+				                                <input type="submit" value="Borrar" class="btn btn-sm btn-outline-danger"/>
+				                            </form>
+				                            <a href="/editar/${usuario.id}" class="btn btn-sm btn-outline-warning">Editar</a>
+				                            <a href="/asignar/${usuario.id}" class="btn btn-sm btn-outline-primary">Asignar Hobbies</a>
+				                            <a href="/mostrar/${usuario.id}" class="btn btn-sm btn-outline-info" target="_blank">Mostrar Info</a>
+				                        </div>
+				                    </td>
+				                </tr>
+				            </c:forEach>
+				        </c:when>
+				        <c:otherwise>
+				            <tr>
+				                <td colspan="7" class="text-center">No hay usuarios registrados</td>
+				            </tr>
+				        </c:otherwise>
+				    </c:choose>
+				</tbody>
             </table>
-			<a href="/nuevo" class="btn btn-outline-success">Crear Usuario</a>
+            <a href="/nuevo" class="btn btn-outline-success">Crear Usuario</a>
         </div>
     </div>
+
     <div class="container mt-4">
         <h1 class="text-center">Lista de Cursos</h1>
         <div class="table-responsive">
@@ -86,24 +109,24 @@
                                     <td>${salon.curso}</td>
                                     <td>${salon.numeroDeInscritos}</td>
                                     <td class="d-flex justify-content-start gap-3">
-                                    	<form action="/borrarCursos/${salon.id}" method="POST">
-                                    		<input type="hidden" name="_method" value="DELETE"/>
-                                    		<input type="submit" value="Borrar" class="btn btn-sm btn-outline-danger"/>
-                                    	</form>
-										<a href="/mostrarCurso/${salon.id}" class="btn btn-sm btn-outline-primary">Mostrar Info</a>										                               
+                                        <form action="/borrarCursos/${salon.id}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE"/>
+                                            <input type="submit" value="Borrar" class="btn btn-sm btn-outline-danger"/>
+                                        </form>
+                                        <a href="/mostrarCurso/${salon.id}" class="btn btn-sm btn-outline-info">Mostrar Info</a>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
                             <tr>
-                                <td colspan="5" class="text-center">No hay cursos registrados</td>
+                                <td colspan="4" class="text-center">No hay cursos registrados</td>
                             </tr>
                         </c:otherwise>
                     </c:choose>
                 </tbody>
             </table>
-			<a href="/nuevoCurso" class="btn btn-outline-success">Crear curso</a>
+            <a href="/nuevoCurso" class="btn btn-outline-success">Crear curso</a>
         </div>
     </div>
 </body>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.app.models.Hobby;
 import com.example.app.models.Salon;
 import com.example.app.models.Usuario;
 import com.example.app.services.Servicios;
@@ -177,6 +178,32 @@ public class ControllerUsers {
 	    model.addAttribute("salon", esteCurso);
 	    return "mostrarCurso.jsp";
 	}
+	
+	@GetMapping("/asignar/{id}")
+	public String asignar(@PathVariable Long id,
+	                      Model model) {
+	    // Buscar el usuario al cual le asigno los hobbies
+	    Usuario esteUsuario = service.buscarUsuario(id);
+	    model.addAttribute("usuario", esteUsuario);
+
+	    // Lista de hobbies
+	    List<Hobby> hobbies = service.todosHobbies();
+	    model.addAttribute("hobbies", hobbies);
+
+	    return "asignar.jsp";
+	}
+	
+	@GetMapping("/asignarHobby/{usuarioId}/{hobbyId}")
+	public String asignarHobby(@PathVariable("usuarioId") Long usuarioId,
+	                           @PathVariable("hobbyId") Long hobbyId) {
+
+	    // Invocar a un método que me asigne el hobby a un usuario
+		service.asignarHobbyAUsuario(usuarioId, hobbyId);
+
+	    return "redirect:/dashboard";
+	}
+
+
 	
 
 }
