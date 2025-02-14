@@ -3324,3 +3324,8 @@ Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/co
 2025-02-13 20:54:25,786 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2025-02-13 20:54:25,790 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\aaomm\Desktop\Bootcamp Full Stack Java\Full Stack Java\JAVA\STS\Peliculas\src\test\resources
 2025-02-13 21:04:30,109 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-13 21:04:30,112 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-13 21:04:30,115 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\aaomm\Desktop\Bootcamp Full Stack Java\Full Stack Java\JAVA\STS\Peliculas\src\test\resources
+2025-02-13 21:05:18,416 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2025-02-13 21:05:18,419 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2025-02-13 21:05:18,420 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\aaomm\Desktop\Bootcamp Full Stack Java\Full Stack Java\JAVA\STS\Peliculas\src\test\resources
