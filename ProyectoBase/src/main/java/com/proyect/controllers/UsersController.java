@@ -49,7 +49,7 @@ public class UsersController {
 						HttpSession session) {
 		User user = uServices.login(userLogin, result);
 		if(result.hasErrors()) {
-			return "login,jsp";
+			return "login.jsp";
 		} else {
 			session.setAttribute("onSession", user);
 			return "redirect:/dashboard";

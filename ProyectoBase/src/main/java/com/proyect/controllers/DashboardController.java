@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 public class DashboardController {
 	@GetMapping("/dashboard")
 	public String dashboard(HttpSession session) {
-		if(session.getAttribute("onSession")==null) {
+		if(session.getAttribute("currentUser")==null) {
 			return "redirect:/";
 		}
 		

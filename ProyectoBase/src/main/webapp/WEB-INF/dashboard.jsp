@@ -13,7 +13,7 @@
 <body class="container mt-5">
 
     <div class="d-flex justify-content-between align-items-center">
-        <h1>Bienvenido ${onSession.name}!</h1>
+        <h1>Bienvenido ${currentUser.name}!</h1>
         <a href="/logout" class="btn btn-outline-danger">Cerrar sesión</a>
     </div>
 </body>
